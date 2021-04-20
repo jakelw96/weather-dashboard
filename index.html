@@ -16,30 +16,41 @@
     </header>
     
     <div class="container">
-        <div class="row row-cols-2">
-          <!--Box to hold search h1, city search, search btn, and previous cities search-->
-          <div class="col">
-            <h2 class="search">Search for a City:</h2>
-            <div class="input-box">
-              <input class="city-search col-2" type="text" placeholder="Type City Name Here">
-            </div>  
-            <div class="search-btn-box">
-              <button class="searchBtn col" id="searchBtn">Search</button>
+      <div class="row">
+        <!--Box to hold search h1, city search, search btn-->
+        <div class="col-2 search-container">
+          <h2 class="search">Search for a City:</h2>
+          <div class="input-box">
+            <input class="city-search" type="text" placeholder="Type City Name Here">
+          </div>  
+          <div class="search-btn-box">
+            <button class="searchBtn" id="searchBtn">Search</button>
+          </div>
+          <!--Border below search button-->
+          <div class="border-bottom border-3 border-dark btnBorder"></div>
+          <!--Box to hold previously searched cities-->
+          <div class="prev-cities">
+            <button class="btn">Search</button>
+          </div>
+        </div>
+      
+        <!--Box to hold current weather data-->
+        <div class="col-10 right-col">
+          <div class="border border-1 border-dark current-weather-box">
+            <div>
+              <h2 id="city-date">(test)Atlanta (3/30/2021)</h3>
             </div>
           </div>
-          <!--Box to hold current weather data-->
-          <div class="col border border-1 border-dark current-weather-box">
-            <h2 id="city-date">(test)Atlanta (3/30/2021)</h3>
-            <h2>5-Day </h2>
-          </div>
-        </div> 
+        </div>
         
+        <!--Box to hold 5 day forecast-->
+        <div class="col forecast">
+          <h2>5 Day Forecast:</h2>
+        </div>
+      </div>
     </div>
     
     
-
-    <!--Border below search button-->
-    <div class="border-bottom border-3 border-dark btnBorder"></div>
 
     
 

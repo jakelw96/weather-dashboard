@@ -14,25 +14,62 @@ header h1 {
   color: whitesmoke;
 }
 
+.search-container {
+  margin-left: -10%;
+}
+
+.prev-cities {
+  padding-top: 2%;
+}
+
+.prev-cities-btns {
+  list-style-type: none;
+}
+
+.forecast {
+  margin-left: 6.5%;
+}
+
+.btn {
+  padding-left: 35%;
+  padding-right: 45%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  background-color: rgb(142, 145, 151);
+  color: white;
+  font-weight: bolder;
+}
+
+.right-col {
+  padding-top: 2%;
+  padding-right: ;
+}
+
+.current-weather-box {
+  padding-bottom: 20%;
+  padding-right: 140%;
+}
+
 .search {
   font-weight: bolder;
-  padding: 10px 25px;
+  padding-top: 25px;
+  margin-left: 4%;
 }
 
 .city-search {
   margin-left: 10px;
-  padding: 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
   border-radius: 10px;
 }
 
 .search-btn-box {
-  margin-left: 0.5%;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .searchBtn {
-  padding-left: 7%;
-  padding-right: 8%;
+  padding-left: 35%;
+  padding-right: 45%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 15px;
@@ -44,5 +81,5 @@ header h1 {
 .btnBorder {
   padding-top: 20px;
   margin-left: 1%;
-  width: 19%;
+  width: 108%;
 }
