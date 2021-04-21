@@ -14,72 +14,63 @@ header h1 {
   color: whitesmoke;
 }
 
-.search-container {
-  margin-left: -10%;
-}
-
-.prev-cities {
-  padding-top: 2%;
-}
-
-.prev-cities-btns {
-  list-style-type: none;
-}
-
-.forecast {
-  margin-left: 6.5%;
-}
-
-.btn {
-  padding-left: 35%;
-  padding-right: 45%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 15px;
-  background-color: rgb(142, 145, 151);
-  color: white;
-  font-weight: bolder;
-}
-
-.right-col {
-  padding-top: 2%;
-  padding-right: ;
-}
-
-.current-weather-box {
-  padding-bottom: 20%;
-  padding-right: 140%;
-}
-
+/*Styles for search items and search btn*/
 .search {
   font-weight: bolder;
-  padding-top: 25px;
-  margin-left: 4%;
+  padding: 10px 9px;
 }
 
 .city-search {
   margin-left: 10px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 59% 10px 10px;
   border-radius: 10px;
 }
 
 .search-btn-box {
-  margin-top: 15px;
+  margin-top: 20px;
+  padding-left: 5px;
 }
 
 .searchBtn {
-  padding-left: 35%;
-  padding-right: 45%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 48% 10px 43%;
   border-radius: 15px;
   background-color: rgb(89, 138, 228);
   color: white;
   font-weight: bolder;
 }
 
-.btnBorder {
+.searchBtnBorder {
   padding-top: 20px;
   margin-left: 1%;
-  width: 108%;
+  width: 100%;
+}
+
+/*Styles for previous cities and btns*/
+.prev-cities-container {
+  padding-top: 10px;
+}
+
+.prev-city-btn-box {
+  padding-bottom: 2.5%;
+}
+
+.prev-city-btns {
+  padding: 10px 47% 10px 44%;
+  background-color: gray;
+  color: white;
+  border-radius: 15px;
+  font-weight: bolder;
+}
+
+/*Styles for current weather and 5 day forecast*/
+.curr-weather {
+  padding-top: 15px;
+}
+
+.current-weather-box {
+  padding-bottom: 20%;
+}
+
+.forecast {
+  padding-top: 1%;
 }

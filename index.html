@@ -15,10 +15,10 @@
         <h1>Weather Dashboard</h1>
     </header>
     
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <!--Box to hold search h1, city search, search btn-->
-        <div class="col-2 search-container">
+        <div class="col-3 search-container">
           <h2 class="search">Search for a City:</h2>
           <div class="input-box">
             <input class="city-search" type="text" placeholder="Type City Name Here">
@@ -27,25 +27,53 @@
             <button class="searchBtn" id="searchBtn">Search</button>
           </div>
           <!--Border below search button-->
-          <div class="border-bottom border-3 border-dark btnBorder"></div>
+          <div class="border-bottom border-3 border-dark searchBtnBorder"></div>
           <!--Box to hold previously searched cities-->
-          <div class="prev-cities">
-            <button class="btn">Search</button>
+          <div class="prev-cities-container">
+            <!--Box to hold btns for prev cities-->
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
+            <div class="prev-city-btn-box">
+              <button class="prev-city-btns">Search</button>
+            </div>
           </div>
         </div>
-      
-        <!--Box to hold current weather data-->
-        <div class="col-10 right-col">
+          <!--Box to hold current weather data-->
+        <div class="col-9 curr-weather">
           <div class="border border-1 border-dark current-weather-box">
             <div>
               <h2 id="city-date">(test)Atlanta (3/30/2021)</h3>
             </div>
           </div>
-        </div>
-        
-        <!--Box to hold 5 day forecast-->
-        <div class="col forecast">
-          <h2>5 Day Forecast:</h2>
+          <!--Box to hold 5 day forecast-->
+          <div class="forecast">
+            <h2>5 Day Forecast:</h2>
+          </div>
         </div>
       </div>
     </div>
