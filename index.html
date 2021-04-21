@@ -22,7 +22,7 @@
         <div class="col-3 search-container">
           <h2 class="search">Search for a City:</h2>
           <div class="input-box">
-            <input class="city-search" type="text" placeholder="Type City Name Here">
+            <input id="city-input" class="city-search" type="text" placeholder="Type City Name Here">
           </div>  
           <div class="search-btn-box">
             <button class="searchBtn" id="searchBtn">Search</button>
@@ -47,11 +47,11 @@
           <!--Box to hold current weather data and 5 day forecast-->
         <div class="col-9 curr-weather">
           <div class="border border-1 border-dark current-weather-box">
-            <h2 id="city-date" class="wi wi-day-sunny">(test)Atlanta (3/30/2021)</h2>
-              <p class="cur-text">Temp: 80</p>
-              <p class="cur-text">Temp: 80</p>
-              <p class="cur-text">Temp: 80</p>
-              <p class="cur-text">Temp: 80</p>
+            <h2 id="city-date" class="wi wi-day-sunny">City and Current day</h2>
+              <p class="cur-text" id="curr-temp"></p>
+              <p class="cur-text" id="curr-wind"></p>
+              <p class="cur-text" id="curr-humidity"></p>
+              <p class="cur-text" id="curr-uvIndex"></p>
           </div>
           <!--Box to hold 5 day forecast-->
           <div class="forecast">
