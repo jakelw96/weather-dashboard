@@ -63,14 +63,28 @@ header h1 {
 }
 
 /*Styles for current weather and 5 day forecast*/
+#city-date {
+  padding-top: 1%;
+  padding-left: 1%;
+  font-weight: bold;
+}
+
 .curr-weather {
   padding-top: 15px;
 }
 
-.current-weather-box {
-  padding-bottom: 20%;
+.cur-text {
+  font-size: 30px;
 }
 
 .forecast {
   padding-top: 1%;
+}
+
+.card {
+  background-color: lightblue;
+}
+
+.card-body {
+  padding-right: 1%;
 }

@@ -11,10 +11,11 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header>
-        <h1>Weather Dashboard</h1>
-    </header>
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
     
+  <main>
     <div class="container-fluid">
       <div class="row">
         <!--Box to hold search h1, city search, search btn-->
@@ -31,59 +32,85 @@
           <!--Box to hold previously searched cities-->
           <div class="prev-cities-container">
             <!--Box to hold btns for prev cities-->
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
-            <div class="prev-city-btn-box">
-              <button class="prev-city-btns">Search</button>
-            </div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
+            <div class="prev-city-btn-box"></div>
           </div>
         </div>
-          <!--Box to hold current weather data-->
+          <!--Box to hold current weather data and 5 day forecast-->
         <div class="col-9 curr-weather">
           <div class="border border-1 border-dark current-weather-box">
-            <div>
-              <h2 id="city-date">(test)Atlanta (3/30/2021)</h3>
-            </div>
+            <h2 id="city-date" class="wi wi-day-sunny">(test)Atlanta (3/30/2021)</h2>
+              <p class="cur-text">Temp: 80</p>
+              <p class="cur-text">Temp: 80</p>
+              <p class="cur-text">Temp: 80</p>
+              <p class="cur-text">Temp: 80</p>
           </div>
           <!--Box to hold 5 day forecast-->
           <div class="forecast">
             <h2>5 Day Forecast:</h2>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="card col-2" style="width: 12rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">03/20/2021</h5>
+                    <i class="wi wi-day-cloudy"></i>
+                    <p class="card-text">Temp: 80</p>
+                    <p class="card-text">Wind: 9.53MPH</p>
+                    <p class="card-text">Humidity: 66%</p>
+                  </div>
+                </div>
+                <div class="card col-2" style="width: 12rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">03/20/2021</h5>
+                    <i class="wi wi-day-cloudy"></i>
+                    <p class="card-text">Temp: 80</p>
+                    <p class="card-text">Wind: 9.53MPH</p>
+                    <p class="card-text">Humidity: 66%</p>
+                  </div>
+                </div>
+                <div class="card col-2" style="width: 12rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">03/20/2021</h5>
+                    <i class="wi wi-day-cloudy"></i>
+                    <p class="card-text">Temp: 80</p>
+                    <p class="card-text">Wind: 9.53MPH</p>
+                    <p class="card-text">Humidity: 66%</p>
+                  </div>
+                </div>
+                <div class="card col-2" style="width: 12rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">03/20/2021</h5>
+                    <i class="wi wi-day-cloudy"></i>
+                    <p class="card-text">Temp: 80</p>
+                    <p class="card-text">Wind: 9.53MPH</p>
+                    <p class="card-text">Humidity: 66%</p>
+                  </div>
+                </div>
+                <div class="card col-2" style="width: 12rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">03/20/2021</h5>
+                    <i class="wi wi-day-cloudy"></i>
+                    <p class="card-text">Temp: 80</p>
+                    <p class="card-text">Wind: 9.53MPH</p>
+                    <p class="card-text">Humidity: 66%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+  </main>  
     
-    
-
-    
-
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="./assets/js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
