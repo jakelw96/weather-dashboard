@@ -88,3 +88,9 @@ header h1 {
 .card-body {
   padding-right: 1%;
 }
+
+.non-btn {
+  font-size: 15px;
+  font-weight: bolder;
+  color: white;
+}
