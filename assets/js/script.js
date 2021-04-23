@@ -1,10 +1,7 @@
-var $curTemp = document.getElementById("curr-temp");
-var $curWind = document.getElementById("curr-wind");
-var $curHumidity = document.getElementById("curr-humidity");
-var $curUVPre = document.getElementById("curr-uvIndex");
-var $curUVText = document.getElementById("uv-text");
-var $curCityDate = document.getElementById("city-date")
 var $inputCity = document.getElementById("city-input");
+
+
+document.querySelector(".curr-weather").style.visibility = "hidden";
 
 // To get coordinates from API
 var getWeatherDataCoord = function(cityName) {
@@ -17,6 +14,45 @@ var getWeatherDataCoord = function(cityName) {
                 // Get latitude and longitude
                 console.log(data)
                 getWeatherData(data)
+                //prevCitiesBtns(cityName);
+                
+                //Variables for each localStorage item to be created
+                var firstBtn = localStorage.getItem("1st-search");
+                var secondBtn = localStorage.getItem("2nd-search");
+                var thirdBtn = localStorage.getItem("3rd-search");
+                var fourthBtn = localStorage.getItem("4th-search");
+                var fifthBtn = localStorage.getItem("5th-search");
+                var sixthBtn = localStorage.getItem("6th-search");
+                var seventhBtn = localStorage.getItem("7th-search");
+                var eigthBtn = localStorage.getItem("8th-search");
+                
+                // Checks if there is data already in localStorage for each city btn, if not, saves the input, with a max of 8 buttons
+                if (((firstBtn) && (secondBtn) && (thirdBtn) && (fourthBtn) && (fifthBtn) && (sixthBtn) && (seventhBtn) && (eigthBtn)) === null) {
+                    localStorage.setItem("1st-search", JSON.stringify(cityName));
+                } else if (((secondBtn) && (thirdBtn) && (fourthBtn) && (fifthBtn) && (sixthBtn) && (seventhBtn) && (eigthBtn)) === null) {
+                    localStorage.setItem("2nd-search", JSON.stringify(cityName));
+                } else if (((thirdBtn) && (fourthBtn) && (fifthBtn) && (sixthBtn) && (seventhBtn) && (eigthBtn)) === null) {
+                    localStorage.setItem("3rd-search", JSON.stringify(cityName));
+                } else if (((fourthBtn) && (fifthBtn) && (sixthBtn) && (seventhBtn) && (eigthBtn)) === null) {
+                    localStorage.setItem("4th-search", JSON.stringify(cityName));
+                } else if (((fifthBtn) && (sixthBtn) && (seventhBtn) && (eigthBtn)) === null) {  
+                    localStorage.setItem("5th-search", JSON.stringify(cityName)); 
+                } else if (((sixthBtn) && (seventhBtn) && (eigthBtn)) === null) { 
+                    localStorage.setItem("6th-search", JSON.stringify(cityName));
+                } else if (((seventhBtn) && (eigthBtn)) === null) {
+                    localStorage.setItem("7th-search", JSON.stringify(cityName));
+                } else if (eigthBtn === null) {
+                    localStorage.setItem("8th-search", JSON.stringify(cityName));
+                } else {
+                    localStorage.setItem("2nd-search", JSON.parse(firstBtn));
+                    localStorage.setItem("3rd-search", JSON.parse(secondBtn));
+                    localStorage.setItem("4th-search", JSON.parse(thirdBtn));
+                    localStorage.setItem("5th-search", JSON.parse(fourthBtn));
+                    localStorage.setItem("6th-search", JSON.parse(fifthBtn));
+                    localStorage.setItem("7th-search", JSON.parse(sixthBtn));
+                    localStorage.setItem("8th-search", JSON.parse(seventhBtn));
+                    localStorage.setItem("1st-search", JSON.stringify(cityName));
+                }
             });
         };
     });
@@ -53,6 +89,13 @@ var createIcon = function(icon) {
 
 // Displays current weather data in the current weather box
 var displayCurWeatherData = function(curWeather) {
+    var $curTemp = document.getElementById("curr-temp");
+    var $curWind = document.getElementById("curr-wind");
+    var $curHumidity = document.getElementById("curr-humidity");
+    var $curUVPre = document.getElementById("curr-uvIndex");
+    var $curUVText = document.getElementById("uv-text");
+    var $curCityDate = document.getElementById("city-date")
+    
     // Variables for current time, current temperature, wind speed, humidity, icon, and UV index 
     var curTemp = curWeather.current.temp;
     var curWind = curWeather.current.wind_speed;
@@ -82,6 +125,7 @@ var displayFiveForecast = function(fiveForecast) {
     var curDate = (new Date(fiveForecast.daily[0].dt * 1000 + (fiveForecast.timezone_offset * 1000)));
 
     $("#first-day-date").text(curDate.toDateString());
+
     $("#day-one-icon").append(createIcon(dayOneIcon));
     $("#first-day-temp").text("Temp: " + parseInt(dayOneTemp) + "\u00B0");
     $("#first-day-wind").text("Wind: " + parseInt(dayOneWind) + " MPH");
@@ -140,6 +184,45 @@ var displayFiveForecast = function(fiveForecast) {
     $("#fifth-day-humid").text("Humidity: " + parseInt(dayFiveHumid) + " %");
 };
 
+// To add a btn for a previous city searched
+var prevCitiesBtns = function(cityName) {
+    var prevCitiesBox = $("#prev-cities-container");
+    var curWeather = document.querySelector(".current-weather-box")
+    
+    //Creates a btn to come back to same search 
+    var searchOneBtn = $("<button>");
+    $(searchOneBtn).text(cityName);
+    $(searchOneBtn).addClass("prev-city-btns");
+    $(prevCitiesBox).append(searchOneBtn);
+    $(searchOneBtn).click(function() {
+        getWeatherDataCoord(cityName);
+    });
+
+};
+
+//Creates a button if data is in localStorage
+var loadBtns = function() {
+    var firstBtn = JSON.parse(localStorage.getItem("1st search"));
+    var prevCitiesBox = $("#prev-cities-container");
+    
+    if (firstBtn !== null) {
+        var searchOneBtn = $("<button>");
+        $(searchOneBtn).text(firstBtn);
+        $(searchOneBtn).addClass("prev-city-btns");
+        $(prevCitiesBox).append(searchOneBtn);
+        $(searchOneBtn).click(function() {
+            document.querySelector(".curr-weather").style.visibility = "visible";
+            getWeatherDataCoord(firstBtn);
+        });
+    } else {
+        console.log("Not in localStorage");
+    }
+};
+//loadBtns();
+
+
+
 $("#searchBtn").on("click", function() {
-    getWeatherDataCoord($inputCity.value);
+    document.querySelector(".curr-weather").style.visibility = "visible";
+    getWeatherDataCoord($inputCity.value)
 });

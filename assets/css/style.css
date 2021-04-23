@@ -51,15 +51,19 @@ header h1 {
 }
 
 .prev-city-btn-box {
-  padding-bottom: 2.5%;
+  padding-bottom: 5%;
 }
 
 .prev-city-btns {
-  padding: 10px 47% 10px 44%;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: gray;
   color: white;
   border-radius: 15px;
   font-weight: bolder;
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
 }
 
 /*Styles for current weather and 5 day forecast*/
@@ -75,6 +79,7 @@ header h1 {
 
 .cur-text {
   font-size: 30px;
+  padding-left: 1.15%;
 }
 
 .forecast {
