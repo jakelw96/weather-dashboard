@@ -5,7 +5,8 @@ document.querySelector(".curr-weather").style.visibility = "hidden";
 var createBtn = function(btnData) {
     var searchBtn = $("<button>");
     $(searchBtn).text(btnData);
-    $(searchBtn).addClass("prev-city-btns");
+    $(searchBtn).addClass("prev-city-btns ");
+
     $(searchBtn).attr("id", "prev-city-btns")
     $(searchBtn).click(function() {
         getWeatherDataCoord(btnData);
@@ -77,69 +78,66 @@ var getWeatherDataCoord = function(cityName) {
                 var $btnEight = $("#btn-8");
 
                // Checks if there is data already in the individual btn containers and replaces with searched contents for session
-                if ((($btnOne) && ($btnTwo) &&( $btnThree) && ($btnFour) && ($btnFive) && ($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) {
+               if ($btnOne.is(':empty')) {
                     $btnOne.append(createBtn(cityName))
-                } else if (($btnTwo && $btnThree && $btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
-                    $btnTwo.replaceWith($btnOne)
-                    $btnOne.replaceWith(createBtn(cityName))
-                } else if (($btnThree && $btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
-                } else if (($btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
-                    $btnFour.replaceWith($btnThree);
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
-                } else if ((($btnFive) && ($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) {  
-                    $btnFive.replaceWith($btnFour);
-                    $btnFour.replaceWith($btnThree);
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
-                } else if ((($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) { 
-                    $btnSix.replaceWith($btnFive);
-                    $btnFive.replaceWith($btnFour);
-                    $btnFour.replaceWith($btnThree);
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
-                } else if ((($btnSeven) && ($btnEight)).is(':empty')) {
-                    $btnSeven.replaceWith($btnSix);
-                    $btnSix.replaceWith($btnFive);
-                    $btnFive.replaceWith($btnFour);
-                    $btnFour.replaceWith($btnThree);
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
-                } else if ($btnEight.is(':empty')) {
-                    $btnEight.replaceWith($btnSeven);
-                    $btnSeven.replaceWith($btnSix);
-                    $btnSix.replaceWith($btnFive);
-                    $btnFive.replaceWith($btnFour);
-                    $btnFour.replaceWith($btnThree);
-                    $btnThree.replaceWith($btnTwo);
-                    $btnTwo.replaceWith($btnOne);
-                    $btnOne.replaceWith(cityName);
+                } else if (($btnTwo.is(':empty')) && ($btnOne.length > 0)) {
+                    $btnTwo.append(createBtn($btnOne.text()));
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnThree.is(':empty')) && ($btnTwo.length > 0)) {
+                    $btnThree.append(createBtn($btnTwo.text()));
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnFour.is(':empty')) && ($btnThree.length > 0)) {
+                    $btnFour.append(createBtn($btnThree.text()));
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnFive.is(':empty')) && ($btnFour.length > 0)) {
+                    $btnFive.append(createBtn($btnFour.text()));
+                    ($btnFour.children().first()).text($btnThree.text());
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnSix.is(':empty')) && ($btnFive.length > 0)) {
+                    $btnSix.append(createBtn($btnFive.text()));
+                    ($btnFive.children().first()).text($btnFour.text());
+                    ($btnFour.children().first()).text($btnThree.text());
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnSeven.is(':empty')) && ($btnSix.length > 0)) {
+                    $btnSeven.append(createBtn($btnSix.text()));
+                    ($btnSix.children().first()).text($btnFive.text());
+                    ($btnFive.children().first()).text($btnFour.text());
+                    ($btnFour.children().first()).text($btnThree.text());
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName);
+                } else if (($btnEight.is(':empty')) && ($btnSeven.length > 0)) {
+                    $btnEight.append(createBtn($btnSeven.text()));
+                    ($btnSeven.children().first()).text($btnSix.text());
+                    ($btnSix.children().first()).text($btnFive.text());
+                    ($btnFive.children().first()).text($btnFour.text());
+                    ($btnFour.children().first()).text($btnThree.text());
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName); 
                 } else {
                     // If all btn elements have data, then each btn will be
                     // replaced with data from the prev with the 1st being most recent search in session
-                    $btnTwo.replaceWith(createBtn($btnOne));
-                    $btnThree.replaceWith(createBtn($btnTwo));
-                    $btnFour.replaceWith(createBtn($btnThree));
-                    $btnFive.replaceWith(createBtn($btnFour));
-                    $btnSix.replaceWith(createBtn($btnFive));
-                    $btnSeven.replaceWith(createBtn($btnSix));
-                    $btnEight.replaceWith(createBtn($btnSeven));
-                    $btnOne.replaceWith(createBtn(cityName));
+                    ($btnEight.children().first()).text($btnSeven.text());
+                    ($btnSeven.children().first()).text($btnSix.text());
+                    ($btnSix.children().first()).text($btnFive.text());
+                    ($btnFive.children().first()).text($btnFour.text());
+                    ($btnFour.children().first()).text($btnThree.text());
+                    ($btnThree.children().first()).text($btnTwo.text());
+                    ($btnTwo.children().first()).text($btnOne.text());
+                    ($btnOne.children().first()).text(cityName); 
                 };
-
             });
         };
     });
 };
-
-
 
 // To get weather data from API
 var getWeatherData = function (cityCoord) {
