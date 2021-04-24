@@ -8,7 +8,7 @@ var createBtn = function(btnData) {
     $(searchBtn).addClass("prev-city-btns");
     $(searchBtn).attr("id", "prev-city-btns")
     $(searchBtn).click(function() {
-        getWeatherDataCoord(cityName);
+        getWeatherDataCoord(btnData);
     });
     
     return searchBtn;
@@ -65,50 +65,75 @@ var getWeatherDataCoord = function(cityName) {
                     localStorage.setItem("7th-search", sixthBtn);
                     localStorage.setItem("8th-search", seventhBtn);
                     localStorage.setItem("1st-search", JSON.stringify(cityName));
-                }
+                };
 
-                // Checks if there is data already in the individual btn containers and replaces if so with searched contents
-                if ($("#btn-1").is(":empty")) {
-                    $("#btn-1").append(createBtn(cityName));
-                } else {
-                    $("#btn-1").replaceWith(createBtn(cityName));
-                }
+                var $btnOne = $("#btn-1");
+                var $btnTwo = $("#btn-2");
+                var $btnThree = $("#btn-3");
+                var $btnFour = $("#btn-4");
+                var $btnFive = $("#btn-5");
+                var $btnSix = $("#btn-6");
+                var $btnSeven = $("#btn-7");
+                var $btnEight = $("#btn-8");
 
-                if ($("#btn-2").is(":empty")) {
-                    $("#btn-2").append(createBtn(cityName));
+               // Checks if there is data already in the individual btn containers and replaces with searched contents for session
+                if ((($btnOne) && ($btnTwo) &&( $btnThree) && ($btnFour) && ($btnFive) && ($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) {
+                    $btnOne.append(createBtn(cityName))
+                } else if (($btnTwo && $btnThree && $btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
+                    $btnTwo.replaceWith($btnOne)
+                    $btnOne.replaceWith(createBtn(cityName))
+                } else if (($btnThree && $btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
+                } else if (($btnFour && $btnFive && $btnSix && $btnSeven && $btnEight).is(':empty')) {
+                    $btnFour.replaceWith($btnThree);
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
+                } else if ((($btnFive) && ($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) {  
+                    $btnFive.replaceWith($btnFour);
+                    $btnFour.replaceWith($btnThree);
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
+                } else if ((($btnSix) && ($btnSeven) && ($btnEight)).is(':empty')) { 
+                    $btnSix.replaceWith($btnFive);
+                    $btnFive.replaceWith($btnFour);
+                    $btnFour.replaceWith($btnThree);
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
+                } else if ((($btnSeven) && ($btnEight)).is(':empty')) {
+                    $btnSeven.replaceWith($btnSix);
+                    $btnSix.replaceWith($btnFive);
+                    $btnFive.replaceWith($btnFour);
+                    $btnFour.replaceWith($btnThree);
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
+                } else if ($btnEight.is(':empty')) {
+                    $btnEight.replaceWith($btnSeven);
+                    $btnSeven.replaceWith($btnSix);
+                    $btnSix.replaceWith($btnFive);
+                    $btnFive.replaceWith($btnFour);
+                    $btnFour.replaceWith($btnThree);
+                    $btnThree.replaceWith($btnTwo);
+                    $btnTwo.replaceWith($btnOne);
+                    $btnOne.replaceWith(cityName);
                 } else {
-                    $("#btn-2").replaceWith(createBtn(cityName));
-                }
+                    // If all btn elements have data, then each btn will be
+                    // replaced with data from the prev with the 1st being most recent search in session
+                    $btnTwo.replaceWith(createBtn($btnOne));
+                    $btnThree.replaceWith(createBtn($btnTwo));
+                    $btnFour.replaceWith(createBtn($btnThree));
+                    $btnFive.replaceWith(createBtn($btnFour));
+                    $btnSix.replaceWith(createBtn($btnFive));
+                    $btnSeven.replaceWith(createBtn($btnSix));
+                    $btnEight.replaceWith(createBtn($btnSeven));
+                    $btnOne.replaceWith(createBtn(cityName));
+                };
 
-                if ($("#btn-3").is(":empty")) {
-                    $("#btn-3").append(createBtn(cityName));
-                } else {
-                    $("#btn-3").replaceWith(createBtn(cityName));
-                }
-
-                if ($("#btn-4").is(":empty")) {
-                    $("#btn-4").append(createBtn(cityName));
-                } else {
-                    $("#btn-4").replaceWith(createBtn(cityName));
-                }
-
-                if ($("#btn-5").is(":empty")) {
-                    $("#btn-5").append(createBtn(cityName));
-                } else {
-                    $("#btn-5").replaceWith(createBtn(cityName));
-                }
-
-                if ($("#btn-6").is(":empty")) {
-                    $("#btn-6").append(createBtn(cityName));
-                } else {
-                    $("#btn-6").replaceWith(createBtn(cityName));
-                }
-
-                if ($("#btn-7").is(":empty")) {
-                    $("#btn-7").append(createBtn(cityName));
-                } else {
-                    $("#btn-7").replaceWith(createBtn(cityName));
-                }
             });
         };
     });
@@ -136,37 +161,14 @@ var getWeatherData = function (cityCoord) {
 
 //Function to create img element for weather icons
 var createIcon = function(icon) {
-    var $curCityDate = document.getElementById("city-date");
-    var $dayOneIcon = document.getElementById("day-one-icon");
-    var $dayTwoIcon = document.getElementById("day-two-icon");
-    var $dayThreeIcon = document.getElementById("day-three-icon");
-    var $dayFourIcon = document.getElementById("day-four-icon");
-    var $dayFiveIcon = document.getElementById("day-five-icon");
-    var $curIcon = document.getElementById("cur-weather-icon");
-    
-    // If statement to check if icons are already present on elements and replace with
-    // new data
-    if ((($curCityDate) && ($dayOneIcon) && ($dayTwoIcon) && ($dayThreeIcon) && ($dayFourIcon) && ($dayFiveIcon)).contains($curIcon)) {
-        // Replaces img icon with new icon if one is already present
-        var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        var iconImg = $("<img>");
-        $(iconImg).attr("src", iconUrl);
-        $(iconImg).attr("alt", "Weather Icon");
-        $(iconImg).attr("id", "cur-weather-icon");
-        $(iconImg).addClass("cur-weather-icon");
+    var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+    var iconImg = $("<img>");
+    $(iconImg).attr("src", iconUrl);
+    $(iconImg).attr("alt", "Weather Icon");
+    $(iconImg).attr("id", "cur-weather-icon");
+    $(iconImg).addClass("cur-weather-icon");
 
-        $("#cur-weather-icon").replaceWith(iconImg);
-    } else {
-        // Creates new img for current icon if one is not already present
-        var iconUrl = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        var iconImg = $("<img>");
-        $(iconImg).attr("src", iconUrl);
-        $(iconImg).attr("alt", "Weather Icon");
-        $(iconImg).attr("id", "cur-weather-icon");
-        $(iconImg).addClass("cur-weather-icon");
-
-        return iconImg;
-    }
+    return iconImg;
 };
 
 
@@ -209,7 +211,11 @@ var displayFiveForecast = function(fiveForecast) {
 
     $("#first-day-date").text(curDate.toDateString());
     // Checks if there is a current img element and replaces if one exists
-    $("#day-one-icon").append(createIcon(dayOneIcon));
+    if ($("#day-one-icon").is(':empty')) {
+        $("#day-one-icon").append(createIcon(dayOneIcon));
+    } else {
+        $("#day-one-icon").replaceWith(createIcon(dayOneIcon));
+    };
     $("#first-day-temp").text("Temp: " + parseInt(dayOneTemp) + "\u00B0");
     $("#first-day-wind").text("Wind: " + parseInt(dayOneWind) + " MPH");
     $("#first-day-humid").text("Humidity: " + parseInt(dayOneHumid) + " %");
@@ -222,7 +228,12 @@ var displayFiveForecast = function(fiveForecast) {
     var curDate = (new Date(fiveForecast.daily[1].dt * 1000 + (fiveForecast.timezone_offset * 1000)));
 
     $("#second-day-date").text(curDate.toDateString());
-    $("#day-two-icon").append(createIcon(dayTwoIcon));
+    // Checks if there is a current img element and replaces if one exists
+    if ($("#day-two-icon").is(':empty')) {
+        $("#day-two-icon").append(createIcon(dayTwoIcon));
+    } else {
+        $("#day-two-icon").replaceWith(createIcon(dayTwoIcon));
+    };
     $("#second-day-temp").text("Temp: " + parseInt(dayTwoTemp) + "\u00B0");
     $("#second-day-wind").text("Wind: " + parseInt(dayTwoWind) + " MPH");
     $("#second-day-humid").text("Humidity: " + parseInt(dayTwoHumid) + " %");
@@ -235,7 +246,12 @@ var displayFiveForecast = function(fiveForecast) {
     var curDate = (new Date(fiveForecast.daily[2].dt * 1000 + (fiveForecast.timezone_offset * 1000)));
 
     $("#third-day-date").text(curDate.toDateString());
-    $("#day-three-icon").append(createIcon(dayThreeIcon));
+    // Checks if there is a current img element and replaces if one exists
+    if ($("#day-three-icon").is(':empty')) {
+        $("#day-three-icon").append(createIcon(dayThreeIcon));
+    } else {
+        $("#day-three-icon").replaceWith(createIcon(dayThreeIcon));
+    };
     $("#third-day-temp").text("Temp: " + parseInt(dayThreeTemp) + "\u00B0");
     $("#third-day-wind").text("Wind: " + parseInt(dayThreeWind) + " MPH");
     $("#third-day-humid").text("Humidity: " + parseInt(dayThreeHumid) + " %");
@@ -249,6 +265,12 @@ var displayFiveForecast = function(fiveForecast) {
 
     $("#fourth-day-date").text(curDate.toDateString());
     $("#day-four-icon").append(createIcon(dayFourIcon));
+    // Checks if there is a current img element and replaces if one exists
+    if ($("#day-four-icon").is(':empty')) {
+        $("#day-four-icon").append(createIcon(dayFourIcon));
+    } else {
+        $("#day-four-icon").replaceWith(createIcon(dayFourIcon));
+    };
     $("#fourth-day-temp").text("Temp: " + parseInt(dayFourTemp) + "\u00B0");
     $("#fourth-day-wind").text("Wind: " + parseInt(dayFourWind) + " MPH");
     $("#fourth-day-humid").text("Humidity: " + parseInt(dayFourHumid) + " %");
@@ -261,7 +283,12 @@ var displayFiveForecast = function(fiveForecast) {
     var curDate = (new Date(fiveForecast.daily[4].dt * 1000 + (fiveForecast.timezone_offset * 1000)));
 
     $("#fifth-day-date").text(curDate.toDateString());
-    $("#day-five-icon").append(createIcon(dayFiveIcon));
+    // Checks if there is a current img element and replaces if one exists
+    if ($("#day-five-icon").is(':empty')) {
+        $("#day-five-icon").append(createIcon(dayFiveIcon));
+    } else {
+        $("#day-five-icon").replaceWith(createIcon(dayFiveIcon));
+    };
     $("#fifth-day-temp").text("Temp: " + parseInt(dayFiveTemp) + "\u00B0");
     $("#fifth-day-wind").text("Wind: " + parseInt(dayFiveWind) + " MPH");
     $("#fifth-day-humid").text("Humidity: " + parseInt(dayFiveHumid) + " %");
@@ -272,74 +299,75 @@ var displayFiveForecast = function(fiveForecast) {
 
 //Creates a button if data is in localStorage
 var loadBtns = function() {
-    var firstBtn = JSON.parse(localStorage.getItem("1st-search"))
-    var secondBtn = JSON.parse(localStorage.getItem("2nd-search"))
-    var thirdBtn = JSON.parse(localStorage.getItem("3rd-search"))
-    var fourthBtn = JSON.parse(localStorage.getItem("4th-search"))
-    var fifthBtn = JSON.parse(localStorage.getItem("5th-search"))
-    var sixthBtn = JSON.parse(localStorage.getItem("6th-search"))
-    var seventhBtn = JSON.parse(localStorage.getItem("7th-search"))
-    var eigthBtn = JSON.parse(localStorage.getItem("8th-search"))
-    
+    var firstBtn = JSON.parse(localStorage.getItem("1st-search"));
+    var secondBtn = JSON.parse(localStorage.getItem("2nd-search"));
+    var thirdBtn = JSON.parse(localStorage.getItem("3rd-search"));
+    var fourthBtn = JSON.parse(localStorage.getItem("4th-search"));
+    var fifthBtn = JSON.parse(localStorage.getItem("5th-search"));
+    var sixthBtn = JSON.parse(localStorage.getItem("6th-search"));
+    var seventhBtn = JSON.parse(localStorage.getItem("7th-search"));
+    var eigthBtn = JSON.parse(localStorage.getItem("8th-search"));
     
     if (firstBtn !== null) {
         $("#btn-1").append(createBtn(firstBtn));
         $("#btn-1").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(firstBtn);
-        })   
-    }
-    else if (secondBtn !== null) {
+        })
+    }       
+    if (secondBtn !== null) {
         $("#btn-2").append(createBtn(secondBtn));
         $("#btn-2").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(secondBtn);
-        })    
-    } else if (thirdBtn !== null) {
+        })
+    }  
+    if (thirdBtn !== null) {
         $("#btn-3").append(createBtn(thirdBtn));
         $("#btn-3").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(thirdBtn);
         })
-    } else if (fourthBtn !== null) {
+    }
+    if (fourthBtn !== null) {
         $("#btn-4").append(createBtn(fourthBtn));
         $("#btn-4").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(fourthBtn);
         })
-    } else if (fifthBtn !== null) {
+    }
+    if (fifthBtn !== null) {  
         $("#btn-5").append(createBtn(fifthBtn));
         $("#btn-5").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(fifthBtn)
         })
-    } else if (sixthBtn !== null) {
+    }
+    if (sixthBtn !== null) { 
         $("#btn-6").append(createBtn(sixthBtn));
         $("#btn-6").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(sixthBtn);
         })
-    } else if (seventhBtn !== null) {
+    }
+    if (seventhBtn !== null) {
         $("#btn-7").append(createBtn(seventhBtn));
         $("#btn-7").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(seventhBtn);
         })
-    } else if (eigthBtn !== null) {
+    }
+    if (eigthBtn !== null) {
         $("#btn-8").append(createBtn(eigthBtn));
         $("#btn-8").click(function() {
             document.querySelector(".curr-weather").style.visibility = "visible";
             getWeatherDataCoord(eigthBtn);
         })
-    } else {
-        console.log("Nothing in localStorage");
-    }
+    }    
 };
-//loadBtns();
+loadBtns();
 
 $("#searchBtn").on("click", function() {
     document.querySelector(".curr-weather").style.visibility = "visible";
     getWeatherDataCoord($inputCity.value)
 });
-
-
