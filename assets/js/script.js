@@ -26,7 +26,7 @@ var createBtn = function(btnData) {
 
 // To get coordinates from API
 var getWeatherDataCoord = function(cityName) {
-    var apiUrlCoord = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6855f141fbc2348ef120b63c317a3472";
+    var apiUrlCoord = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=6855f141fbc2348ef120b63c317a3472";
     // Make a request to url to get coordinates
     fetch(apiUrlCoord).then(function(response) {
         // Request was successful
