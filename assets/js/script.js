@@ -1,6 +1,15 @@
 var $inputCity = document.getElementById("city-input");
 document.querySelector(".curr-weather").style.visibility = "hidden";
 
+// Updates placeholder text on media query
+var pcView = window.matchMedia("(max-width: 576px)");
+var pcViewChange = function(pcView) {
+    if (pcView.matches) {
+        document.getElementById("city-input").placeholder = "Enter City";
+    }
+}
+pcViewChange(pcView);
+
 // Creates buttons
 var createBtn = function(btnData) {
     var searchBtn = $("<button>");
@@ -135,6 +144,10 @@ var getWeatherDataCoord = function(cityName) {
                     ($btnOne.children().first()).text(cityName); 
                 };
             });
+        // Response un-sucessful, show modal  
+        } else {
+            $(".modal-title").text("Error: " + response.statusText)
+            $(".modalShow").modal('show')
         };
     });
 };
@@ -172,14 +185,14 @@ var createIcon = function(icon) {
 
 // Displays current weather data in the current weather box
 var displayCurWeatherData = function(curWeather) {
+    // Variables for current time, current temperature, wind speed, humidity, icon, and UV index
     var $curTemp = document.getElementById("curr-temp");
     var $curWind = document.getElementById("curr-wind");
     var $curHumidity = document.getElementById("curr-humidity");
     var $curUVPre = document.getElementById("curr-uvIndex");
-    var $curUVText = document.getElementById("uv-text");
-    var $curCityDate = document.getElementById("city-date")
-    
-    // Variables for current time, current temperature, wind speed, humidity, icon, and UV index 
+    var $curCityDate = document.getElementById("city-date");
+
+    // Data variables for current time, current temperature, wind speed, humidity, icon, and UV index 
     var curTemp = curWeather.current.temp;
     var curWind = curWeather.current.wind_speed;
     var curHumid = curWeather.current.humidity;
@@ -187,15 +200,34 @@ var displayCurWeatherData = function(curWeather) {
     var curIcon = curWeather.current.weather[0].icon;
     var curDate = (new Date(curWeather.current.dt * 1000 + (curWeather.timezone_offset * 1000)));
     
+    
+
     // Add current weather conditions to p elements
     $($curCityDate).text($inputCity.value + " " + "(" + curDate.toDateString() + ")").append(createIcon(curIcon));
     $($curTemp).text("Temperature: " + parseInt(curTemp) + "\u00B0");
     $($curWind).text("Wind: " + parseInt(curWind) + " MPH");
     $($curHumidity).text("Humidity: " + parseInt(curHumid) + " %");
-    $($curUVPre).text("UV Index: " + curUV);
-    
+    $($curUVPre).text("UV Index: ");
+    // Creates disabled btn element to show Uvi
+    var $curUVText = $("<button>");
+    $($curUVText).attr("id", "dis-UV");
+    $($curUVText).prop("disabled", true);
+    $($curUVText).text(curUV);
+    $($curUVPre).append($curUVText);
     
     // Color codes how severe UV is
+    if (curUV < 2 ) {
+        ($curUVText).css("backgroundColor", "green");
+    } else if (curUV <= 5 ) {
+        ($curUVText).css("backgroundColor", "yellow");
+        ($curUVText).css("color", "black");
+    } else if (curUV <= 7) {
+        ($curUVText).css("backgroundColor", "orange");
+    } else if (curUV <= 10) {
+        ($curUVText).css("backgroundColor", "red");
+    } else if (curUV >= 11) {
+        ($curUVText).css("backgroundColor", "blue");
+    }
 }
 
 // Displays 5 day forecast in cards
